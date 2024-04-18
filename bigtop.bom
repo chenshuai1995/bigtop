@@ -97,11 +97,11 @@ bigtop {
   base_version = version.takeWhile { it != '-' }
   stack {
     'jdk' { version = "1." + ( System.getenv('BIGTOP_JDK') ?: "8" ); version_base = version }
-    'scala' { version = '2.12.13'; version_base = version }
+    'scala' { version = '2.12.17'; version_base = version }
   }
   apache {
-    APACHE_MIRROR = "https://apache.osuosl.org"
-    APACHE_ARCHIVE = "https://archive.apache.org/dist"
+    APACHE_MIRROR = "https://repo.huaweicloud.com/apache"
+    APACHE_ARCHIVE = "https://mirrors.aliyun.com/apache"
   }
 /** End of Base Configuration */
 
@@ -270,7 +270,6 @@ bigtop {
       version { base = bigtop.version; pkg = base-"-SNAPSHOT"; release = 1 }
       tarball { destination = "bigtop-utils-${version.base}.tar.gz" }
     }
-/*
     'bigtop-select' {
       name    = "bigtop-select"
       relNotes = "Service package for Apache Bigtop information to use Ambari"
@@ -278,7 +277,6 @@ bigtop {
       tarball { destination = "bigtop-select-${version.base}.tar.gz" }
       packaging = 'rpm'
     }
-*/
     'bigtop-jsvc' {
       name    = "bigtop-jsvc"
       relNotes = "Apache Common Daemon (jsvc) service package"
